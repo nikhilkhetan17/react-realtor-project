@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Oauth from "../components/Oauth";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,12 +13,33 @@ export default function SignIn() {
     password: "",
   });
   const { email, password } = formData;
+  const navigate = useNavigate();
 
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+  }
+
+  async function onSumbit(e) {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Bad user credentials");
+      console.log(error.message);
+    }
   }
 
   return (
@@ -81,6 +105,7 @@ export default function SignIn() {
               </p>
             </div>
             <button
+              onClick={onSumbit}
               type="submit"
               className="w-full mt-6 bg-blue-600 text-white py-3 rounded font-medium uppercase shadow-md hover:bg-blue-700 transition ease-in-out active:bg-blue-800"
             >
