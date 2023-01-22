@@ -1,5 +1,5 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doc, updateDoc } from "firebase/firestore";
@@ -48,6 +48,7 @@ export default function Profile() {
       toast.success("Profile updated succesfully");
     } catch (error) {
       toast.error("Could not update profile");
+      console.log(error);
     }
   }
 
