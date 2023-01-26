@@ -90,7 +90,7 @@ export default function Profile() {
   }, [auth.currentUser.uid]);
 
   async function onDelete(listingID) {
-    if (window.confirm("Are you sure you want to delete")) {
+    if (window.confirm("Are you sure you want to delete?")) {
       await deleteDoc(doc(db, "listings", listingID));
       const updatedListings = listings.filter(
         (listing) => listing.id !== listingID
