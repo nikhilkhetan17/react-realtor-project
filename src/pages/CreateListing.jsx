@@ -415,7 +415,7 @@ export default function CreateListing() {
               />
               {type === "rent" && (
                 <div>
-                  <p className="text-md font-medium w-full ">₹ / Month</p>
+                  <p className="text-md font-medium w-full ">$ / Month</p>
                 </div>
               )}
             </div>
@@ -439,7 +439,7 @@ export default function CreateListing() {
                 />
                 {type === "rent" && (
                   <div>
-                    <p className="text-md font-medium w-full ">₹ / Month</p>
+                    <p className="text-md font-medium w-full ">$ / Month</p>
                   </div>
                 )}
               </div>
