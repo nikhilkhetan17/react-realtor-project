@@ -10,10 +10,6 @@
 
 <br>
 
-## 📌 Tech-stack:
-
-<br>
-
 ## 📌 Features:
 
 - ### User can sign-up, sign-in using email, password or can use google sign-up or sign-in
